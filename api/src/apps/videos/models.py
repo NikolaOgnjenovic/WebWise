@@ -6,4 +6,4 @@ class Video(models.Model):
     title = models.CharField(max_length=100)
     thumbnail_url = models.URLField()
     video_url = models.URLField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
