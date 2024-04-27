@@ -8,7 +8,7 @@ services:
       - "4200:4200"
     volumes:
       - angular_app_data:/app
-      - ./app/web-wise:/app # While developing to not have to rebuild the image
+#      - ./app/web-wise:/app # While developing to not have to rebuild the image
     depends_on:
       - api
 
