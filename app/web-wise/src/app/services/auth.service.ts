@@ -64,7 +64,6 @@ export class AuthService {
   }
 
   getUserNameByUserId(userId: string): Observable<string> {
-    console.log("user ID: " + userId);
     const headers = new HttpHeaders({
       'X-CSRFToken': 'B9p9SRWnot4fedpd8sDpBJSOKxs1BXHn'
     });

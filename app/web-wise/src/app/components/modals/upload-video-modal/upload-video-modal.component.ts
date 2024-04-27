@@ -34,7 +34,7 @@ export class UploadVideoModalComponent {
 
     const { title, thumbnailUrl, videoUrl } = this.newVideoForm.value;
     // TODO: auth user id
-    this.videoService.addVideo(title, thumbnailUrl, videoUrl, 'user2');
+    this.videoService.createVideo(title, thumbnailUrl, videoUrl, 'user2');
     if (this.onVideoCreated != undefined) {
       this.onVideoCreated();
     }
