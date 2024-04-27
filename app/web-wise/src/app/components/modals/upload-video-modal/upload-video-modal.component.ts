@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { VideoService } from '../../../services/video.service';
 import {FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 import {NgIf} from "@angular/common";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-upload-video-modal',
@@ -14,9 +15,10 @@ import {NgIf} from "@angular/common";
   templateUrl: 'upload-video-modal-component.html'
 })
 export class UploadVideoModalComponent {
+  @Input() onVideoCreated: (() => void) | undefined;
   newVideoForm: FormGroup;
 
-  constructor(protected modalService: NgbModal, private videoService: VideoService) {
+  constructor(protected modalService: NgbModal, private videoService: VideoService, private toastr: ToastrService) {
     this.newVideoForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
       thumbnailUrl: new FormControl('', [Validators.required, this.urlValidator]),
@@ -33,6 +35,9 @@ export class UploadVideoModalComponent {
     const { title, thumbnailUrl, videoUrl } = this.newVideoForm.value;
     // TODO: auth user id
     this.videoService.addVideo(title, thumbnailUrl, videoUrl, 'user2');
+    if (this.onVideoCreated != undefined) {
+      this.onVideoCreated();
+    }
     this.modalService.dismissAll();
     this.newVideoForm.reset();
   }

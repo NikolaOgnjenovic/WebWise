@@ -1,14 +1,17 @@
 import {Component, Input} from '@angular/core';
-import {NgForOf, NgStyle} from "@angular/common";
+import {NgForOf, NgOptimizedImage, NgStyle} from "@angular/common";
 import {Video} from "../../../models/video.model";
 import {Router} from "@angular/router";
+import {BackgroundImageErrorDirective} from "../../../directives/background-image-error-directive";
 
 @Component({
   selector: 'app-video-list',
   standalone: true,
   imports: [
     NgStyle,
-    NgForOf
+    NgForOf,
+    NgOptimizedImage,
+    BackgroundImageErrorDirective
   ],
   templateUrl: './video-list.component.html',
   styleUrl: './video-list.component.css'
