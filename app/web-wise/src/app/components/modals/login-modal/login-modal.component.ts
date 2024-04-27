@@ -25,7 +25,7 @@ export class LoginModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
@@ -39,12 +39,19 @@ export class LoginModalComponent implements OnInit {
       return;
     }
 
-    const { email, password } = this.loginForm.value;
-    const success = this.authService.login(email, password);
-    if (!success) {
-      this.toastr.error('Invalid credentials. Try again!', 'Error', { positionClass: 'toast-bottom-right' });
-    } else {
-      this.activeModal.close();
-    }
+    const { username, password } = this.loginForm.value;
+    this.authService.login(username, password).subscribe(
+      success => {
+        if (!success) {
+          this.toastr.error('Invalid credentials. Try again!', 'Error', { positionClass: 'toast-bottom-right' });
+        } else {
+          this.activeModal.close();
+        }
+      },
+      error => {
+        console.error('Login failed:', error);
+        this.toastr.error('An error occurred during login. Please try again later.', 'Error', { positionClass: 'toast-bottom-right' });
+      }
+    );
   }
 }
