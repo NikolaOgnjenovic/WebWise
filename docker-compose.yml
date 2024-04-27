@@ -1,15 +1,26 @@
 version: '3'
 
 services:
+  angular-app:
+    container_name: angular-app
+    build: ./app
+    ports:
+      - 4200:4200
+    volumes:
+      - angular_app_data:/app
+    depends_on:
+      - api
+
   api:
     container_name: api
     build: ./api
     ports:
-      - "8001:8001"
+      - 8001:8001
     env_file:
       - .env
     volumes:
       - api_data:/app
+      - ./api:/app # While developing to not have to rebuild the image
     depends_on:
       - db
 
@@ -26,3 +37,4 @@ services:
 volumes:
   api_data:
   db_data:
+  angular_app_data:
