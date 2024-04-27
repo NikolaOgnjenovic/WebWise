@@ -8,7 +8,7 @@ until PGPASSWORD=$POSTGRES_PASSWORD psql -h "$DB_HOSTNAME" -U "$POSTGRES_USER" -
 done
 
 echo "Applying migrations..."
-python3 manage.py migrate
+python3 src/manage.py migrate
 
 echo "Starting Django server..."
-python3 manage.py runserver 0.0.0.0:8001
+python3 src/manage.py runserver 0.0.0.0:8001
