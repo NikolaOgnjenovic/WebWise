@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.videos',
     'apps.chat_messages',
+    'apps.video_sessions',
 ]
 
 MIDDLEWARE = [

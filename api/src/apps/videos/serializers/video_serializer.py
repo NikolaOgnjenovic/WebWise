@@ -5,7 +5,7 @@ from ..models import Video
 class VideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Video
-        fields = ('id', 'title', 'thumbnail_url', 'video_url', 'uploader_id')
+        fields = ('id', 'title', 'thumbnail_url', 'video_url', 'user')
         extra_kwargs = {'id': {'read_only': True}}
 
     def create(self, validated_data):
