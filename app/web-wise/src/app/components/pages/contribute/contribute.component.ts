@@ -1,12 +1,13 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import { Component} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {UploadVideoModalComponent} from "../../modals/upload-video-modal/upload-video-modal.component";
 import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {RouterOutlet} from "@angular/router";
 import {VideoListComponent} from "../../shared/video-list/video-list.component";
 import {Video} from "../../../models/video.model";
-import {VideoService} from "../../../services/video.service";
 import {ToastrService} from "ngx-toastr";
+import {VideoService} from "../../../services/old/video.service";
+import {AuthService} from "../../../services/old/auth.service";
 
 @Component({
   selector: 'app-contribute',
@@ -22,10 +23,9 @@ import {ToastrService} from "ngx-toastr";
 export class ContributeComponent {
   videos: Video[] = [];
   filteredVideos: Video[] = [];
-  authUserId: string = 'user2'; // TODO: auth user id
 
-  constructor(private modalService: NgbModal, private videoService: VideoService, private toastr: ToastrService) {
-    this.videos = this.videoService.getVideosByUploaderId(this.authUserId);
+  constructor(private modalService: NgbModal, private videoService: VideoService, private toastr: ToastrService, private authService: AuthService) {
+    this.videos = this.videoService.getVideosByUploaderId(this.authService.getCurrentUser()!.id);
     this.filteredVideos = this.videos;
   }
 
@@ -43,7 +43,7 @@ export class ContributeComponent {
 
   onVideoCreated(): void {
     this.toastr.success('Video created successfully', 'Success', { positionClass: 'toast-bottom-right' });
-    this.videos = this.videoService.getVideosByUploaderId(this.authUserId);
+    this.videos = this.videoService.getVideosByUploaderId(this.authService.getCurrentUser()!.id);
     this.filteredVideos = this.videos;
   }
 }

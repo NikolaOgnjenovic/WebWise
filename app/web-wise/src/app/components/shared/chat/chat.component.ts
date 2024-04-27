@@ -2,8 +2,8 @@ import {ChangeDetectorRef, Component, Input} from '@angular/core';
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {VideoSession} from "../../../models/video-session.model";
 import {VideoSessionService} from "../../../services/video-session.service";
-import {ChatMessageService} from "../../../services/chat-message.service";
-import {AuthService} from "../../../services/auth.service";
+import {ChatMessageService} from "../../../services/old/chat-message.service";
+import {AuthService} from "../../../services/old/auth.service";
 
 @Component({
   selector: 'app-chat',

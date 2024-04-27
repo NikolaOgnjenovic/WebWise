@@ -12,5 +12,5 @@ class UserLoginView(APIView):
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            return Response({'user_id': user.id, 'username': user.username})
+            return Response({'user_id': user.id, 'username': user.username, 'email': user.email})
         return Response({'error': 'Invalid credentials'}, status=HTTP_401_UNAUTHORIZED)
