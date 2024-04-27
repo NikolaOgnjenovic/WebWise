@@ -3,9 +3,9 @@ import {Router, RouterOutlet} from "@angular/router";
 import {NgForOf} from "@angular/common";
 import {Video} from "../../../models/video.model";
 import {VideoSessionService} from "../../../services/video-session.service";
-import {VideoService} from "../../../services/video.service";
 import {VideoSession} from "../../../models/video-session.model";
 import {NavbarComponent} from "../../shared/navbar/navbar.component";
+import {VideoService} from "../../../services/old/video.service";
 
 @Component({
   selector: 'app-history',

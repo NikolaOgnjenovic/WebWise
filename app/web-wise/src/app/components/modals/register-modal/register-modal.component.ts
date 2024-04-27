@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from "../../../services/auth.service";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import {NgIf} from "@angular/common";
+import {AuthService} from "../../../services/old/auth.service";
 
 @Component({
   selector: 'app-register-modal',
@@ -16,9 +17,12 @@ import {NgIf} from "@angular/common";
 export class RegisterModalComponent implements OnInit {
   registerForm!: FormGroup;
 
-  constructor(public activeModal: NgbActiveModal,
-              private authService: AuthService,
-              private formBuilder: FormBuilder) {}
+  constructor(
+    public activeModal: NgbActiveModal,
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -39,6 +43,20 @@ export class RegisterModalComponent implements OnInit {
 
     const { email, username, password } = this.registerForm.value;
     this.authService.register(username, email, password);
-    this.activeModal.close();
+    // this.authService.register(username, email, password).subscribe(
+    //   _ => {
+    //     this.toastr.success('Registration successful!', 'Success');
+    //     this.activeModal.close();
+    //   },
+    //   error => {
+    //     if (error.error && error.error.username) {
+    //       this.toastr.error(error.error.username[0], 'Error');
+    //     } else if (error.error && error.error.email) {
+    //       this.toastr.error(error.error.email[0], 'Error');
+    //     } else {
+    //       this.toastr.error('Registration failed', 'Error');
+    //     }
+    //   }
+    // );
   }
 }
