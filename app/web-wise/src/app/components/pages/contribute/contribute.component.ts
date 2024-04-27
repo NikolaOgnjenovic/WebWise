@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {CreateVideoModalComponent} from "../../modals/create-video-modal/create-video-modal.component";
+import {UploadVideoModalComponent} from "../../modals/upload-video-modal/upload-video-modal.component";
 import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {RouterOutlet} from "@angular/router";
 
@@ -19,6 +19,6 @@ export class ContributeComponent {
   constructor(private modalService: NgbModal) {}
 
   openModal(): void {
-    this.modalService.open(CreateVideoModalComponent, { centered: true });
+    this.modalService.open(UploadVideoModalComponent, { centered: true });
   }
 }

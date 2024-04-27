@@ -5,15 +5,15 @@ import {FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/
 import {NgIf} from "@angular/common";
 
 @Component({
-  selector: 'app-create-video-modal',
+  selector: 'app-upload-video-modal',
   standalone: true,
   imports: [
     ReactiveFormsModule,
     NgIf
   ],
-  templateUrl: './create-video-modal.component.html'
+  templateUrl: 'upload-video-modal-component.html'
 })
-export class CreateVideoModalComponent {
+export class UploadVideoModalComponent {
   newVideoForm: FormGroup;
 
   constructor(protected modalService: NgbModal, private videoService: VideoService) {
