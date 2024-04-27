@@ -1,0 +1,11 @@
+.chat-box-container {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.chat-messages {
+  list-style-type: none;
+  padding: 0;
+}
