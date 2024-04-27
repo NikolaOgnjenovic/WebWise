@@ -1,9 +1,8 @@
 import {ChangeDetectorRef, Component, Input} from '@angular/core';
-import { VideoSessionService } from "../../services/video-session.service";
-import {ChatMessageService} from "../../services/chat-message.service";
-import {VideoSession} from "../../models/video-session.model";
 import {NgForOf, NgIf} from "@angular/common";
-import {last} from "rxjs";
+import {VideoSession} from "../../../models/video-session.model";
+import {VideoSessionService} from "../../../services/video-session.service";
+import {ChatMessageService} from "../../../services/chat-message.service";
 
 @Component({
   selector: 'app-chat',
@@ -41,6 +40,4 @@ export class ChatComponent {
 
     inputMessage.value = '';
   }
-
-  protected readonly last = last;
 }

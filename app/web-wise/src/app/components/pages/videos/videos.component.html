@@ -1,0 +1,14 @@
+<app-navbar/>
+
+<div class="container mt-5">
+  <div class="container">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Search" (input)="search($event)">
+    </div>
+    <app-video-list
+      [videos]="filteredVideos"
+    />
+  </div>
+
+ <router-outlet/>
+</div>
