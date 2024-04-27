@@ -42,7 +42,7 @@ export class VideoSessionComponent implements OnInit {
       const sessionId = params['sessionId'];
       this.video = this.videoService.getVideoById(videoId);
       if (!this.video) {
-        this.toastr.error('Video cannot be played', 'Error');
+        this.toastr.error('Video cannot be played', 'Error', { positionClass: 'toast-bottom-right' });
         return;
       }
 
@@ -76,7 +76,7 @@ export class VideoSessionComponent implements OnInit {
   onVideoLoad(videoPlayer: HTMLVideoElement): void {
     console.table(videoPlayer);
     if (videoPlayer.readyState === 4 && videoPlayer.networkState === 3) {
-      this.toastr.error('Failed to load the video', 'Error');
+      this.toastr.error('Failed to load the video', 'Error', { positionClass: 'toast-bottom-right' });
     } else {
       videoPlayer.pause();
       this.videoIsPlaying = false;

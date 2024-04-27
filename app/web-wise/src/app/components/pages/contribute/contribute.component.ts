@@ -42,7 +42,7 @@ export class ContributeComponent {
   }
 
   onVideoCreated(): void {
-    this.toastr.success('Video created successfully', 'Success');
+    this.toastr.success('Video created successfully', 'Success', { positionClass: 'toast-bottom-right' });
     this.videos = this.videoService.getVideosByUploaderId(this.authUserId);
     this.filteredVideos = this.videos;
   }
