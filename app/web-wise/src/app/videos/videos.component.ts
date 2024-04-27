@@ -6,17 +6,17 @@ import {NavbarComponent} from "../navbar/navbar.component";
 import {VideoService} from "../../services/video.service";
 
 @Component({
-  selector: 'app-learn',
-  templateUrl: './learn.component.html',
+  selector: 'app-videos',
+  templateUrl: './videos.component.html',
   standalone: true,
   imports: [
     RouterOutlet,
     NgForOf,
     NavbarComponent
   ],
-  styleUrls: ['./learn.component.css']
+  styleUrls: ['./videos.component.css']
 })
-export class LearnComponent {
+export class VideosComponent {
   videos: Video[] = [];
   filteredVideos: Video[] = [];
 
@@ -34,5 +34,9 @@ export class LearnComponent {
 
   navigateToVideoSession(video: Video): void {
     this.router.navigate(['/video-session', video.id]);
+  }
+
+  navigateToHistory(): void {
+    this.router.navigate(['/history']);
   }
 }

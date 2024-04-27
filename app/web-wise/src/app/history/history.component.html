@@ -1,0 +1,18 @@
+<app-navbar/>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-4 mb-4" *ngFor="let videoSession of videoSessions">
+      <div class="card" (click)="navigateToVideoSession(videoSession)">
+        <img [src]="videos[videoSession.id].thumbnailUrl" class="card-img-top" alt="Video Thumbnail">
+        <div class="card-body">
+          <h5 class="card-title">{{ videos[videoSession.id].title }}</h5>
+          <p class="card-text">Last updated: {{ videoSession.lastModifiedDateTime }}</p>
+          <p class="card-text">Chat Messages: {{ videoSession.chatMessages.length }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet/>
+</div>

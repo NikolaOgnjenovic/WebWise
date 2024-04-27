@@ -3,7 +3,7 @@
   <ul *ngIf="videoSession && videoSession.chatMessages.length !== 0" class="chat-messages list-unstyled">
     <li *ngFor="let message of videoSession.chatMessages; let last = last">
       <div class="message-details">
-        <p><strong> {{ message.senderId }} </strong> at {{ message.dateTimeSent }}: </p>
+        <p><strong> {{ message.senderId }} </strong> at {{ message.sentDateTime }}: </p>
         <p> {{ message.content }} </p>
       </div>
       <hr *ngIf="!last" class="my-3">
