@@ -1,5 +1,5 @@
 from django.urls import path
-from src.apps.videos.views import VideosView, VideosByUploaderView, VideoByIdView
+from .views import VideosView, VideosByUploaderView, VideoByIdView
 
 urlpatterns = [
     path('videos/', VideosView.as_view()),

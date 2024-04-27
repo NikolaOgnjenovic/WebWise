@@ -1,8 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
-from src.apps.videos.models import Video
-from src.apps.videos.serializers import VideoSerializer
+from ..models import Video
+from ..serializers import VideoSerializer
 
 
 class VideoByIdView(APIView):
