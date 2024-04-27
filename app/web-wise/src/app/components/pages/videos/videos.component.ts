@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {Router, RouterOutlet} from "@angular/router";
-import {NgForOf} from "@angular/common";
+import {RouterOutlet} from "@angular/router";
+import {NgForOf, NgStyle} from "@angular/common";
 import {Video} from "../../../models/video.model";
 import {VideoService} from "../../../services/video.service";
 import {NavbarComponent} from "../../shared/navbar/navbar.component";
+import {VideoListComponent} from "../../shared/video-list/video-list.component";
 
 
 @Component({
@@ -13,7 +14,9 @@ import {NavbarComponent} from "../../shared/navbar/navbar.component";
   imports: [
     RouterOutlet,
     NgForOf,
-    NavbarComponent
+    NavbarComponent,
+    NgStyle,
+    VideoListComponent
   ],
   styleUrls: ['./videos.component.css']
 })
@@ -21,8 +24,8 @@ export class VideosComponent {
   videos: Video[] = [];
   filteredVideos: Video[] = [];
 
-  constructor(private router: Router, private videoService: VideoService) {
-    this.videos = this.videoService.getVideos();
+  constructor(private videoService: VideoService) {
+    this.videos = this.videoService.getAll();
     this.filteredVideos = this.videos;
   }
 
@@ -31,9 +34,5 @@ export class VideosComponent {
     this.filteredVideos = this.videos.filter(video =>
       video.title.toLowerCase().includes(query.toLowerCase())
     );
-  }
-
-  navigateToVideoSession(video: Video): void {
-    this.router.navigate(['/video-session', video.id]);
   }
 }

@@ -3,6 +3,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {UploadVideoModalComponent} from "../../modals/upload-video-modal/upload-video-modal.component";
 import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {RouterOutlet} from "@angular/router";
+import {VideoListComponent} from "../../shared/video-list/video-list.component";
+import {Video} from "../../../models/video.model";
+import {VideoService} from "../../../services/video.service";
 
 @Component({
   selector: 'app-contribute',
@@ -10,15 +13,28 @@ import {RouterOutlet} from "@angular/router";
   standalone: true,
   imports: [
     NavbarComponent,
-    RouterOutlet
+    RouterOutlet,
+    VideoListComponent
   ],
   styleUrls: ['./contribute.component.css']
 })
 export class ContributeComponent {
-
-  constructor(private modalService: NgbModal) {}
+  videos: Video[] = [];
+  filteredVideos: Video[] = [];
+  constructor(private modalService: NgbModal, private videoService: VideoService) {
+    // TODO: auth user id
+    this.videos = this.videoService.getVideosByUploaderId('user2');
+    this.filteredVideos = this.videos;
+  }
 
   openModal(): void {
     this.modalService.open(UploadVideoModalComponent, { centered: true });
+  }
+
+  search(event: any): void {
+    const query = event.target.value;
+    this.filteredVideos = this.videos.filter(video =>
+      video.title.toLowerCase().includes(query.toLowerCase())
+    );
   }
 }
