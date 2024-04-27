@@ -18,11 +18,13 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import IndexApiView
 from apps.users.urls import urlpatterns as users_urlpatterns
+from apps.videos.urls import urlpatterns as videos_urlpatterns
 
 api_urlpatterns = [
     path('', IndexApiView.as_view()),
     path('admin/', admin.site.urls),
     *users_urlpatterns,
+    *videos_urlpatterns
 ]
 
 urlpatterns = [
