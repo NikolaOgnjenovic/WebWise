@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from "@angular/router";
-import {AuthService} from "../../../services/auth.service";
 import {NgIf} from "@angular/common";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {LoginModalComponent} from "../../modals/login-modal/login-modal.component";
 import {RegisterModalComponent} from "../../modals/register-modal/register-modal.component";
+import {AuthService} from "../../../services/old/auth.service";
 
 @Component({
   selector: 'app-navbar',

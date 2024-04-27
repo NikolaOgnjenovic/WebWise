@@ -6,8 +6,8 @@ import {NgClass, NgIf} from "@angular/common";
 import {Video} from "../../../models/video.model";
 import {VideoSession} from "../../../models/video-session.model";
 import {VideoSessionService} from "../../../services/video-session.service";
-import {VideoService} from "../../../services/video.service";
 import { ToastrService } from 'ngx-toastr';
+import {VideoService} from "../../../services/old/video.service";
 
 @Component({
   selector: 'app-video-session',
@@ -74,7 +74,6 @@ export class VideoSessionComponent implements OnInit {
   }
 
   onVideoLoad(videoPlayer: HTMLVideoElement): void {
-    console.table(videoPlayer);
     if (videoPlayer.readyState === 4 && videoPlayer.networkState === 3) {
       this.toastr.error('Failed to load the video', 'Error', { positionClass: 'toast-bottom-right' });
     } else {
