@@ -62,4 +62,18 @@ export class AuthService {
   getCurrentUser(): User | null {
     return this.currentUser;
   }
+
+  getUserNameByUserId(userId: string): Observable<string> {
+    console.log("user ID: " + userId);
+    const headers = new HttpHeaders({
+      'X-CSRFToken': 'B9p9SRWnot4fedpd8sDpBJSOKxs1BXHn'
+    });
+    return this.http.get<any>('http://localhost:8001/api/v1/users/' + userId + '/username/', { headers }).pipe(
+      map(response => response.username),
+      catchError(error => {
+        console.error('Error fetching username:', error);
+        return '';
+      })
+    );
+  }
 }

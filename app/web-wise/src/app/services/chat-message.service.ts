@@ -8,12 +8,13 @@ export class ChatMessageService {
 
   constructor() { }
 
-  createChatMessage(content: string, senderId: string): ChatMessage {
+  createChatMessage(content: string, senderId: string, senderUsername: string): ChatMessage {
     return {
       id: this.generateUniqueId(),
       sentDateTime: new Date().toISOString(),
       senderId,
-      content
+      content,
+      senderUsername
     };
   }
 
