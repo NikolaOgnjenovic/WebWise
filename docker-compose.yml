@@ -5,7 +5,7 @@ services:
     container_name: angular-app
     build: ./app
     ports:
-      - 4200:4200
+      - "4200:4200"
     volumes:
       - angular_app_data:/app
       - ./app/web-wise:/app # While developing to not have to rebuild the image
@@ -16,7 +16,7 @@ services:
     container_name: api
     build: ./api
     ports:
-      - 8001:8001
+      - "8001:8001"
     env_file:
       - .env
     volumes:
@@ -29,13 +29,25 @@ services:
     container_name: db
     image: postgres:latest
     ports:
-      - 5432:5432
+      - "5432:5432"
     env_file:
       - .env
     volumes:
       - db_data:/var/lib/postgresql/data
 
+  chroma:
+    container_name: chroma
+    image: chromadb/chroma:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - chromadb_data:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - ANONYMIZED_TELEMETRY=FALSE
+
 volumes:
   api_data:
   db_data:
   angular_app_data:
+  chromadb_data:

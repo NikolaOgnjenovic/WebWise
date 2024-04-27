@@ -19,12 +19,14 @@ from django.urls import path, include
 from .views import IndexApiView
 from apps.users.urls import urlpatterns as users_urlpatterns
 from apps.videos.urls import urlpatterns as videos_urlpatterns
+from apps.chat_messages.urls import urlpatterns as chat_messages_urlpatterns
 
 api_urlpatterns = [
     path('', IndexApiView.as_view()),
     path('admin/', admin.site.urls),
     *users_urlpatterns,
-    *videos_urlpatterns
+    *videos_urlpatterns,
+    *chat_messages_urlpatterns,
 ]
 
 urlpatterns = [
