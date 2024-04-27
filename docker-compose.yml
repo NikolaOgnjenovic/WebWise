@@ -2,12 +2,27 @@ version: '3'
 
 services:
   api:
-    container_name: webwise-api
+    container_name: api
     build: ./api
     ports:
       - "8001:8001"
+    env_file:
+      - .env
     volumes:
-      - api-data:/app
+      - api_data:/app
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/postgresql/data
 
 volumes:
-  api-data:
+  api_data:
+  db_data:
