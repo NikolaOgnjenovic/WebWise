@@ -1,8 +1,9 @@
 import {ChangeDetectorRef, Component, Input} from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {VideoSession} from "../../../models/video-session.model";
 import {VideoSessionService} from "../../../services/video-session.service";
-import {ChatMessageService} from "../../../services/chat-message.service";
+import {ChatMessageService} from "../../../services/old/chat-message.service";
+import {AuthService} from "../../../services/old/auth.service";
 
 @Component({
   selector: 'app-chat',
@@ -10,7 +11,8 @@ import {ChatMessageService} from "../../../services/chat-message.service";
   standalone: true,
   imports: [
     NgIf,
-    NgForOf
+    NgForOf,
+    AsyncPipe
   ],
   styleUrls: ['./chat.component.css']
 })
@@ -20,9 +22,20 @@ export class ChatComponent {
   constructor(
     private chatMessageService: ChatMessageService,
     private videoSessionService: VideoSessionService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private authService: AuthService
   ) {
     this.videoSession = null;
+  }
+
+  async getUserNameByUserId(userId: string): Promise<string> {
+    console.log("getting");
+    try {
+      return await this.authService.getUserNameByUserId(userId).toPromise() ?? "User";
+    } catch (error) {
+      console.error('Error getting username:', error);
+      return '';
+    }
   }
 
   sendMessage(inputMessage: HTMLInputElement): void {
@@ -33,7 +46,7 @@ export class ChatComponent {
 
     if (this.videoSession) {
       // TODO: Sender id
-      const chatMessage = this.chatMessageService.createChatMessage(message, 'userSenderId');
+      const chatMessage = this.chatMessageService.createChatMessage(message, this.authService.getCurrentUser()!.id, this.authService.getCurrentUser()!.username);
       this.videoSessionService.addChatMessage(this.videoSession.id, chatMessage);
       this.cdr.detectChanges();
     }
