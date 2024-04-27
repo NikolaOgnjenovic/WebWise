@@ -6,7 +6,7 @@ from ..models import Video
 from ..serializers import VideoSerializer
 
 
-class VideosView(APIView):
+class VideoListAPIVIew(APIView):
     def post(self, request):
         serializer = VideoSerializer(data=request.data)
         if serializer.is_valid():
