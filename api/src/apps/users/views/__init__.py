@@ -1,1 +1,1 @@
-from .UserRegistrationVIew import UserRegistrationView
+from .user_registration_view import UserRegistrationView
