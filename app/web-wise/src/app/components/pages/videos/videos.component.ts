@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Video } from "../../models/video.model";
 import {Router, RouterOutlet} from "@angular/router";
 import {NgForOf} from "@angular/common";
-import {NavbarComponent} from "../navbar/navbar.component";
-import {VideoService} from "../../services/video.service";
+import {Video} from "../../../models/video.model";
+import {VideoService} from "../../../services/video.service";
+import {NavbarComponent} from "../../shared/navbar/navbar.component";
+
 
 @Component({
   selector: 'app-videos',
@@ -34,9 +35,5 @@ export class VideosComponent {
 
   navigateToVideoSession(video: Video): void {
     this.router.navigate(['/video-session', video.id]);
-  }
-
-  navigateToHistory(): void {
-    this.router.navigate(['/history']);
   }
 }

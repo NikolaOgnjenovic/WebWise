@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, RouterOutlet} from '@angular/router';
-import { Video } from "../../models/video.model";
-import { VideoService } from "../../services/video.service";
-import { VideoSession } from "../../models/video-session.model";
-import { VideoSessionService } from "../../services/video-session.service";
-import {ChatComponent} from "../chat/chat.component";
-import {NavbarComponent} from "../navbar/navbar.component";
+import {ChatComponent} from "../../shared/chat/chat.component";
+import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {NgIf} from "@angular/common";
+import {Video} from "../../../models/video.model";
+import {VideoSession} from "../../../models/video-session.model";
+import {VideoSessionService} from "../../../services/video-session.service";
+import {VideoService} from "../../../services/video.service";
 
 @Component({
   selector: 'app-video-session',
@@ -39,13 +39,9 @@ export class VideoSessionComponent implements OnInit {
       this.video = this.videoService.getVideoById(videoId);
       if (this.video) {
         if (sessionId) {
-          console.log("SESSIONID: " + sessionId);
           this.videoSession = this.videoSessionService.getVideoSessionById(sessionId);
-          console.table(this.videoSession);
         } else {
-          console.log("Empty session id");
           this.videoSession = this.videoSessionService.createVideoSession(videoId);
-          console.table(this.videoSession);
         }
       }
     });

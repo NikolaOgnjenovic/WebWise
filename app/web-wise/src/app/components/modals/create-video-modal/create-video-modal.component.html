@@ -1,0 +1,35 @@
+<div class="modal-header d-flex justify-content-between">
+  <h4 class="modal-title" id="modal-basic-title">Create New Video</h4>
+  <button type="button" class="btn-close align-self-start" aria-label="Close" (click)="modalService.dismissAll()"></button>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="newVideoForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" formControlName="title">
+      <div *ngIf="newVideoForm.get('title')?.invalid && newVideoForm.get('title')?.touched" class="text-danger">
+        Title is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="thumbnailUrl">Thumbnail URL</label>
+      <input type="text" class="form-control" id="thumbnailUrl" formControlName="thumbnailUrl">
+      <div *ngIf="newVideoForm.get('thumbnailUrl')?.invalid && newVideoForm.get('thumbnailUrl')?.touched" class="text-danger">
+        Thumbnail URL is required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="videoUrl">Video URL</label>
+      <input type="text" class="form-control" id="videoUrl" formControlName="videoUrl">
+      <div *ngIf="newVideoForm.get('videoUrl')?.invalid && newVideoForm.get('videoUrl')?.touched" class="text-danger">
+        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['invalidUrl']">Invalid URL</span>
+        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['required']">Video URL is required</span>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="createVideo()" [disabled]="newVideoForm.invalid">Create</button>
+  <button type="button" class="btn btn-secondary" (click)="modalService.dismissAll()">Cancel</button>
+</div>

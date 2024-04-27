@@ -18,11 +18,29 @@ export class VideoService {
 
   constructor() {}
 
+  addVideo(title: string, thumbnailUrl: string, videoUrl: string): void {
+    const video = {
+      id: this.generateUniqueId(),
+      title,
+      thumbnailUrl,
+      videoUrl
+    }
+    this.videos.push(video);
+  }
+
   getVideos(): Video[] {
     return this.videos;
   }
 
   getVideoById(id: string | null): Video | null {
     return this.videos.find(video => video.id === id) ?? null;
+  }
+
+  private generateUniqueId(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      const r = Math.random() * 16 | 0;
+      const v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 }
