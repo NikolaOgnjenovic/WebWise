@@ -6,14 +6,21 @@
 
     <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link">Welcome, {{ username }}</a>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link">Welcome, {{ getCurrentUsername() }}</a>
         </li>
       </ul>
       <div class="navbar-nav">
-        <a class="nav-link" routerLink="/videos" routerLinkActive="active">Videos</a>
-        <a class="nav-link" routerLink="/contribute" routerLinkActive="active">Contribute</a>
-        <a class="nav-link" routerLink="/history" routerLinkActive="active">History</a>
+        <ng-container *ngIf="!isLoggedIn(); else loggedIn">
+          <button class="btn btn-outline-light" (click)="openLoginModal()">Login</button>
+          <button class="btn btn-outline-light" (click)="openRegisterModal()">Register</button>
+        </ng-container>
+        <ng-template #loggedIn>
+          <a class="nav-link" routerLink="/videos" routerLinkActive="active">Videos</a>
+          <a class="nav-link" routerLink="/contribute" routerLinkActive="active">Contribute</a>
+          <a class="nav-link" routerLink="/history" routerLinkActive="active">History</a>
+          <button class="btn btn-outline-light" (click)="logout()">Logout</button>
+        </ng-template>
       </div>
     </div>
   </div>
