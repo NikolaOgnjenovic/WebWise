@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  api:
+    container_name: webwise-api
+    build: ./api
+    ports:
+      - "8001:8001"
+    volumes:
+      - api-data:/app
+
+volumes:
+  api-data:
