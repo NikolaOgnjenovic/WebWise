@@ -5,7 +5,7 @@ services:
     container_name: angular-app
     build: ./app
     ports:
-      - 4200:4200
+      - "4200:4200"
     volumes:
       - angular_app_data:/app
     depends_on:
@@ -15,7 +15,7 @@ services:
     container_name: api
     build: ./api
     ports:
-      - 8001:8001
+      - "8001:8001"
     env_file:
       - .env
     volumes:
@@ -28,7 +28,7 @@ services:
     container_name: db
     image: postgres:latest
     ports:
-      - 5432:5432
+      - "5432:5432"
     env_file:
       - .env
     volumes:
@@ -38,7 +38,7 @@ services:
     container_name: chroma
     image: chromadb/chroma:latest
     ports:
-      - 8000:8000
+      - "8000:8000"
     volumes:
       - chromadb_data:/chroma/chroma
     environment:
