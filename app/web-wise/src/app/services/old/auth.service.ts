@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -7,10 +7,13 @@ import {User} from "../../models/user.model";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService implements OnInit {
   private currentUserKey = 'currentUser';
 
   constructor(private http: HttpClient) {}
+  ngOnInit() {
+    this.login("admin", "admin");
+  }
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem(this.currentUserKey);
