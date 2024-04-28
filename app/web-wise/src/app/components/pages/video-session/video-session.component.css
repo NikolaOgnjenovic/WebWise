@@ -1,5 +1,6 @@
 .media-container {
-  border: 2px solid #ccc;
+  border: 2px solid var(--color-primary);
+  border-radius: 2rem;
 }
 
 .video-container {
@@ -22,4 +23,8 @@
 
 .btn-container .btn i {
   font-size: 1.5rem;
+}
+
+.card-title {
+  color: var(--color-primary);
 }

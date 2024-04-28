@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {Router, RouterLink, RouterOutlet} from "@angular/router";
-import {NavbarComponent} from "../../shared/navbar/navbar.component";
+import {RouterLink, RouterOutlet} from "@angular/router";
+import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-homepage',
@@ -8,13 +8,10 @@ import {NavbarComponent} from "../../shared/navbar/navbar.component";
   imports: [
     RouterOutlet,
     RouterLink,
-    NavbarComponent
+    SidebarComponent
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })
 export class HomepageComponent {
-  username: string = "John";
-
-  constructor(private router: Router) {}
 }

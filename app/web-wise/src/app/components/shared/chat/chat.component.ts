@@ -2,8 +2,9 @@ import {ChangeDetectorRef, Component, Input} from '@angular/core';
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {VideoSession} from "../../../models/video-session.model";
 import {VideoSessionService} from "../../../services/video-session.service";
-import {ChatMessageService} from "../../../services/old/chat-message.service";
-import {AuthService} from "../../../services/old/auth.service";
+import {DateFormatPipe} from "../../../pipes/date-format.pipe";
+import {ChatMessageService} from "../../../services/chat-message.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-chat',
@@ -12,7 +13,8 @@ import {AuthService} from "../../../services/old/auth.service";
   imports: [
     NgIf,
     NgForOf,
-    AsyncPipe
+    AsyncPipe,
+    DateFormatPipe
   ],
   styleUrls: ['./chat.component.css']
 })
@@ -46,6 +48,7 @@ export class ChatComponent {
 
     if (this.videoSession) {
       // TODO: Sender id
+      console.log("ADDED");
       const chatMessage = this.chatMessageService.createChatMessage(message, this.authService.getCurrentUser()!.id, this.authService.getCurrentUser()!.username);
       this.videoSessionService.addChatMessage(this.videoSession.id, chatMessage);
       this.cdr.detectChanges();

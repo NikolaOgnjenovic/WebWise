@@ -1,0 +1,31 @@
+.modal-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.modal-button-container .btn {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.modal-label {
+  color: var(--color-secondary);
+}
+
+.modal-input {
+  background-color: var(--color-secondary);
+  color: var(--color-primary) !important;
+}
+
+.modal-input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-secondary) inset !important;
+  -webkit-text-fill-color: var(--color-primary) !important;
+}
+
+.modal-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}

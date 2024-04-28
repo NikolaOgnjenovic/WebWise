@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import {RouterOutlet} from "@angular/router";
 import {NgForOf, NgStyle} from "@angular/common";
 import {Video} from "../../../models/video.model";
-import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {VideoListComponent} from "../../shared/video-list/video-list.component";
-import {VideoService} from "../../../services/old/video.service";
+import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
+import {VideoService} from "../../../services/video.service";
 
 
 @Component({
@@ -14,9 +14,9 @@ import {VideoService} from "../../../services/old/video.service";
   imports: [
     RouterOutlet,
     NgForOf,
-    NavbarComponent,
     NgStyle,
-    VideoListComponent
+    VideoListComponent,
+    SidebarComponent
   ],
   styleUrls: ['./videos.component.css']
 })

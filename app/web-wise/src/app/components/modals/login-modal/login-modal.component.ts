@@ -3,7 +3,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {NgIf} from "@angular/common";
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
-import {AuthService} from "../../../services/old/auth.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-login-modal',
@@ -13,7 +13,8 @@ import {AuthService} from "../../../services/old/auth.service";
     FormsModule,
     ReactiveFormsModule
   ],
-  templateUrl: './login-modal.component.html'
+  templateUrl: './login-modal.component.html',
+  styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent implements OnInit {
   loginForm!: FormGroup;

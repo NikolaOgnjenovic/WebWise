@@ -1,25 +1,27 @@
-<div class="modal-header">
-  <h4 class="modal-title">Login</h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<div class="modal-body">
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input type="text" class="form-control" id="username" formControlName="username">
-      <div *ngIf="formControls['username'].invalid && (formControls['username'].dirty || formControls['username'].touched)" class="text-danger">
-        <div *ngIf="formControls['username'].errors?.['required']">Username is required</div>
+<div class="modal-wrapper" style="background-color: var(--color-primary);">
+  <div class="modal-header sidebar-brand" style="justify-content: center;">
+    <h4 class="modal-title" style="color: var(--color-secondary);">Login</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="username" class="modal-label" style="color: var(--color-secondary)">Username</label>
+        <input type="text" class="form-control modal-input" id="username" formControlName="username">
+        <div *ngIf="formControls['username'].invalid && (formControls['username'].dirty || formControls['username'].touched)" class="text-danger">
+          <div *ngIf="formControls['username'].errors?.['required']" style="color: var(--color-error);">Username is required</div>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" formControlName="password">
-      <div *ngIf="formControls['password'].invalid && (formControls['password'].dirty || formControls['password'].touched)" class="text-danger">
-        <div *ngIf="formControls['password'].errors?.['required']">Password is required</div>
+      <div class="form-group">
+        <label for="password" class="modal-label">Password</label>
+        <input type="password" class="form-control modal-input" id="password" formControlName="password">
+        <div *ngIf="formControls['password'].invalid && (formControls['password'].dirty || formControls['password'].touched)" class="text-danger">
+          <div *ngIf="formControls['password'].errors?.['required']" style="color: var(--color-error);">Password is required</div>
+        </div>
       </div>
-    </div>
-    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
-  </form>
+      <div class="modal-button-container">
+        <button type="submit" class="btn btn-outline-light btn-padded" [disabled]="loginForm.invalid">Login</button>
+        <button type="button" class="btn btn-outline-light btn-padded" (click)="activeModal.dismiss()">Cancel</button>
+      </div>
+    </form>
+  </div>
 </div>
