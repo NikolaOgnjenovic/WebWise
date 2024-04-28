@@ -7,14 +7,6 @@
   color: var(--color-primary);
 }
 
-.modal-error {
-  color: var(--color-secondary);
-}
-
-.modal-error {
-  color: white;
-}
-
 .modal-button-container {
   display: flex;
   justify-content: center;

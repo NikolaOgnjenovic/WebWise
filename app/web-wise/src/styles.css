@@ -9,3 +9,17 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.form-control {
+  border: 1px solid var(--color-primary);
+  border-radius: 1.5rem;
+}
+
+.form-control::placeholder {
+  color: var(--color-primary);
+}
+
+.btn {
+  border: 0 solid var(--color-primary);
+  border-radius: 1.5rem;
+}

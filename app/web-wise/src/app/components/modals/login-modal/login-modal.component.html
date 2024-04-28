@@ -8,14 +8,14 @@
         <label for="username" class="modal-label" style="color: var(--color-secondary)">Username</label>
         <input type="text" class="form-control modal-input" id="username" formControlName="username">
         <div *ngIf="formControls['username'].invalid && (formControls['username'].dirty || formControls['username'].touched)" class="text-danger">
-          <div *ngIf="formControls['username'].errors?.['required']">Username is required</div>
+          <div *ngIf="formControls['username'].errors?.['required']" style="color: var(--color-error);">Username is required</div>
         </div>
       </div>
       <div class="form-group">
         <label for="password" class="modal-label">Password</label>
         <input type="password" class="form-control modal-input" id="password" formControlName="password">
         <div *ngIf="formControls['password'].invalid && (formControls['password'].dirty || formControls['password'].touched)" class="text-danger">
-          <div *ngIf="formControls['password'].errors?.['required']">Password is required</div>
+          <div *ngIf="formControls['password'].errors?.['required']" style="color: var(--color-error);">Password is required</div>
         </div>
       </div>
       <div class="modal-button-container">

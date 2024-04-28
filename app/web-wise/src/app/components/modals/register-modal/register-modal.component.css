@@ -12,10 +12,6 @@
   -webkit-text-fill-color: var(--color-primary) !important;
 }
 
-.modal-error div {
-  color: var(--color-secondary);
-}
-
 .modal-button-container {
   display: flex;
   justify-content: center;

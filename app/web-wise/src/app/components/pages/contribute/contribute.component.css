@@ -12,26 +12,9 @@ h4 {
   margin-bottom: 1rem;
 }
 
-.form-control {
-  font-size: 1rem;
-  padding: 0.5rem;
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
-}
-
-.form-control:focus {
-  outline: none;
-  box-shadow: 0 0 0 0.2rem var(--color-primary);
-}
-
-.form-control::placeholder {
-  color: var(--color-primary);
-}
-
 .card {
   background-color: var(--color-secondary);
-  border-radius: 10px;
+  border-radius: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   height: 100%;

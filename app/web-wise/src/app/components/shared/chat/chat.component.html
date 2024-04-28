@@ -1,18 +1,20 @@
-<div class="chat-box-container">
-  <p *ngIf="videoSession && videoSession.chatMessages.length === 0" class="chat-messages">Begin chatting!</p>
-  <ul *ngIf="videoSession && videoSession.chatMessages.length !== 0" class="chat-messages list-unstyled">
-    <li *ngFor="let message of videoSession.chatMessages; let last = last">
-      <div class="message-details">
-        <p><strong> {{  message.username }} </strong> at {{ message.sentDateTime }}: </p>
-        <p> {{ message.content }} </p>
-      </div>
-      <hr *ngIf="!last" class="my-3">
-    </li>
-  </ul>
-</div>
-<div class="input-group mt-3">
-  <input #inputMessage type="text" class="form-control" placeholder="Type your message..." (keydown.enter)="sendMessage(inputMessage)">
-  <div class="input-group-append">
-    <button class="btn btn-primary" type="button" (click)="sendMessage(inputMessage)">Send</button>
+<div class="chat-wrapper">
+  <div class="input-group">
+    <input #inputMessage type="text" class="form-control" placeholder="Type your message..." (keydown.enter)="sendMessage(inputMessage)">
+    <div class="input-group-append">
+      <button class="btn btn-primary" type="button" (click)="sendMessage(inputMessage)">Send</button>
+    </div>
+  </div>
+  <div class="chat-box-container mt-3">
+    <p *ngIf="videoSession && videoSession.chatMessages.length === 0" class="chat-messages">Begin chatting!</p>
+    <ul *ngIf="videoSession && videoSession.chatMessages.length !== 0" class="chat-messages list-unstyled">
+      <li *ngFor="let message of videoSession.chatMessages; let last = last">
+        <div class="message-details">
+          <p><strong>{{ message.username }}</strong> at {{ message.sentDateTime | dateFormat }}:</p>
+          <p>{{ message.content }}</p>
+        </div>
+        <hr *ngIf="!last" class="my-3">
+      </li>
+    </ul>
   </div>
 </div>

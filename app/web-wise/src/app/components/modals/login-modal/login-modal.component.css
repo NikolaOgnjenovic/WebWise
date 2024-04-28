@@ -29,7 +29,3 @@
   justify-content: center;
   margin-top: 1rem;
 }
-
-.modal-error div {
-  color: var(--color-secondary);
-}

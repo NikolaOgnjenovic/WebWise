@@ -8,23 +8,23 @@
       <label for="title" style="color: var(--color-secondary);">Title</label>
       <input type="text" class="form-control modal-input" id="title" formControlName="title">
       <div *ngIf="newVideoForm.get('title')?.invalid && newVideoForm.get('title')?.touched" class="text-danger modal-error" style="color: white;">
-        <span *ngIf="newVideoForm.get('title')?.errors?.['required']" style="color: white;">Title is required</span>
+        <span *ngIf="newVideoForm.get('title')?.errors?.['required']" style="color: var(--color-error);">Title is required</span>
       </div>
     </div>
     <div class="form-group">
       <label for="thumbnailUrl" style="color: var(--color-secondary);">Thumbnail URL</label>
       <input type="text" class="form-control modal-input" id="thumbnailUrl" formControlName="thumbnailUrl">
       <div *ngIf="newVideoForm.get('thumbnailUrl')?.invalid && newVideoForm.get('thumbnailUrl')?.touched" class="text-danger modal-error">
-        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['invalidUrl']" style="color: white;">Invalid URL</span>
-        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['required']" style="color: white;">Video URL is required</span>
+        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['invalidUrl']" style="color: var(--color-error)">Invalid URL</span>
+        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['required']" style="color: var(--color-error);">Video URL is required</span>
       </div>
     </div>
     <div class="form-group">
       <label for="videoUrl" style="color: var(--color-secondary);">Video URL</label>
       <input type="text" class="form-control modal-input" id="videoUrl" formControlName="videoUrl">
       <div *ngIf="newVideoForm.get('videoUrl')?.invalid && newVideoForm.get('videoUrl')?.touched" class="text-danger modal-error">
-        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['invalidUrl']" style="color: white;">Invalid URL</span>
-        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['required']" style="color: white;">Video URL is required</span>
+        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['invalidUrl']" style="color: var(--color-error);">Invalid URL</span>
+        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['required']" style="color: var(--color-error);">Video URL is required</span>
       </div>
     </div>
   </form>
