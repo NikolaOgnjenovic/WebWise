@@ -4,8 +4,8 @@ import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {Video} from "../../../models/video.model";
 import {VideoSessionService} from "../../../services/video-session.service";
 import {VideoSession} from "../../../models/video-session.model";
-import {VideoService} from "../../../services/old/video.service";
 import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
+import {VideoService} from "../../../services/video.service";
 
 @Component({
   selector: 'app-history',

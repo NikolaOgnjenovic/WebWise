@@ -6,8 +6,8 @@ import {Video} from "../../../models/video.model";
 import {VideoSession} from "../../../models/video-session.model";
 import {VideoSessionService} from "../../../services/video-session.service";
 import { ToastrService } from 'ngx-toastr';
-import {VideoService} from "../../../services/old/video.service";
 import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
+import {VideoService} from "../../../services/video.service";
 
 @Component({
   selector: 'app-video-session',
