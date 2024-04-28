@@ -13,7 +13,8 @@ import {AuthService} from "../../../services/old/auth.service";
     FormsModule,
     ReactiveFormsModule
   ],
-  templateUrl: './login-modal.component.html'
+  templateUrl: './login-modal.component.html',
+  styleUrls: ['./login-modal.component.css']
 })
 export class LoginModalComponent implements OnInit {
   loginForm!: FormGroup;

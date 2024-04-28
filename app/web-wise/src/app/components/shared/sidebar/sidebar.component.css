@@ -4,7 +4,7 @@
   left: 0;
   bottom: 0;
   width: 20%;
-  padding: 20px;
+  padding: 1rem;
   background-color: #0B0B0D;
   backdrop-filter: blur(5px);
   display: flex;
@@ -15,7 +15,6 @@
   color: #fff;
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 20px;
   text-decoration: none;
 }
 
@@ -23,7 +22,6 @@
   color: #ffffff;
   font-size: 2rem;
   position: relative;
-  padding-right: 30px;
 }
 
 .nav-link.active::before {
@@ -39,10 +37,11 @@
 }
 
 .nav-item {
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 .sidebar-bottom {
+  padding: 1rem;
   margin-top: auto;
 }
 
@@ -58,11 +57,12 @@
 }
 
 .btn-padded {
-  padding: 10px 20px;
   display: block;
-  margin-bottom: 10px;
 }
 
+.btn:hover {
+  background-color: transparent;
+}
 
 .web {
   color: var(--color-primary);
