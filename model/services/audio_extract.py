@@ -2,6 +2,8 @@ from moviepy.editor import VideoFileClip
 import re
 import librosa
 import soundfile as sf
+import os
+from constants import AUDIO_PATH
 
 
 def get_filename(text):
@@ -25,19 +27,10 @@ def video_to_audio(video_path: str, audio_path: str):
     audio_clip.close()
     video_clip.close()
     resample_audio(audio_path)
+    return audio_path
 
 
 def to_audio(video_path: str):
-    return video_to_audio(video_path, get_filename(video_path)+'.wav')
-
-
-def main():
-    mp4_file = "video/video.webm"
-    mp3_file = "audio/audio.wav"
-
-    video_to_audio(mp4_file, mp3_file)
-    # resample_audio(mp3_file)
-
-
-if __name__ == "__main__":
-    main()
+    print(video_path)
+    print(get_filename(video_path))
+    return video_to_audio(video_path, os.path.join(AUDIO_PATH, os.path.basename(video_path)+".wav"))

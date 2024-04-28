@@ -1,5 +1,4 @@
 from huggingface_hub import hf_hub_download
-from llama_cpp import Llama
 from constants import MODEL_NAME, MODEL_BASENAME, MODELS_PATH
 
 if __name__ == "__main__":
