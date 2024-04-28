@@ -3,23 +3,26 @@
 
   <div class="col-10">
     <div class="container mt-5">
-      <h2 class="mb-4">Continue exploring videos that you've already interacted with.</h2>
+      <h2>Contribute to the community by uploading educational videos.</h2>
 
-      <div class="row" *ngIf="videoSessions && videoSessions.length > 0">
-        <div class="col-4 mb-4" *ngFor="let videoSession of videoSessions">
-          <div class="card" (click)="navigateToVideoSession(videoSession)">
-            <img [src]="videos[videoSession.id].thumbnailUrl" class="card-img-top" alt="Video Thumbnail">
-            <div class="card-body">
-              <h5 class="card-title">{{ videos[videoSession.id].title }}</h5>
-              <p class="card-text">Last updated: {{ videoSession.lastModifiedDateTime }}</p>
-              <p class="card-text">Chat Messages: {{ videoSession.chatMessages.length }}</p>
+      <div class="row">
+        <div class *ngIf="videoSessions && videoSessions.length > 0">
+          <div class="col-4 mb-4" *ngFor="let videoSession of videoSessions">
+            <div class="card">
+              <div class="card-thumbnail" [ngStyle]="{'background-image': 'url(' + videos[videoSession.id].thumbnailUrl + ')'}">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ videos[videoSession.id].title }}</h5>
+                <h6 class="card-text">Last updated: {{ videoSession.lastModifiedDateTime }}</h6>
+                <h6 class="card-text">Chat Messages: {{ videoSession.chatMessages.length }}</h6>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div *ngIf="!videoSessions || videoSessions.length === 0">
-        <h4>No videos available <span>😢</span></h4>
+        <h4>No video previous video sessions available. Try starting one!</h4>
       </div>
 
       <router-outlet/>

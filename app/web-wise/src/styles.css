@@ -3,3 +3,9 @@
   --color-secondary: #FFF;
   --color-error: #FF5E5E;
 }
+
+body {
+  background-image: url('assets/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}

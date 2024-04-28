@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, RouterOutlet} from "@angular/router";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {Video} from "../../../models/video.model";
 import {VideoSessionService} from "../../../services/video-session.service";
 import {VideoSession} from "../../../models/video-session.model";
@@ -15,7 +15,8 @@ import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
     RouterOutlet,
     NgForOf,
     NgIf,
-    SidebarComponent
+    SidebarComponent,
+    NgStyle
   ],
   styleUrls: ['./history.component.css']
 })
