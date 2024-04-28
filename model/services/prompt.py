@@ -2,8 +2,8 @@ from typing import List, Tuple
 from llama_cpp import Llama
 from langchain.prompts import ChatPromptTemplate
 from constants import MODEL_PATH
-from chroma_connect import get_similar_documents
-from llama_api_connect import get_llama_api_response
+from services.chroma_connect import get_similar_documents
+# from llama_api_connect import get_llama_api_response
 
 
 def init_model():
@@ -19,7 +19,7 @@ def get_reply(prompt: str, llm):
                   echo=False)
 
 
-def get_full_prompt(user_prompt: str, collection_id, conversation_history: List[Tuple[str, str]]) -> str:
+def get_full_prompt(user_prompt: str, collection_id, conversation_history: List[dict]) -> str:
     docs = get_similar_documents(user_prompt, collection_id)
     
     template = ChatPromptTemplate.from_messages([
@@ -33,13 +33,13 @@ def get_full_prompt(user_prompt: str, collection_id, conversation_history: List[
 
     prompt_value =  template.invoke({
         "rag": [("system", doc) for doc in docs],
-        "conversation": conversation_history,
+        "conversation": [(message['role'], message['content']) for message in conversation_history],
     })
     
     return prompt_value.to_string()
     
 
-def get_full_prompt_for_llama_api(user_prompt: str, collection_id, conversation_history: List[Tuple[str, str]]) -> dict:
+def get_full_prompt_for_llama_api(user_prompt: str, collection_id, conversation_history: List[dict]):
     docs = get_similar_documents(user_prompt, collection_id)
     return {
         "messages": [
@@ -58,19 +58,19 @@ def get_full_prompt_for_llama_api(user_prompt: str, collection_id, conversation_
     # }
 
 
-def main():
-    llm = init_model()
-    prompt = "How to add 404 page to react router?"
+# def main():
+#     llm = init_model()
+#     prompt = "How to add 404 page to react router?"
 
-    # prompt = get_full_prompt(prompt, 'test_collection', [])
-    # print(get_reply(prompt, llm))
-    # print(prompt)
+#     # prompt = get_full_prompt(prompt, 'test_collection', [])
+#     # print(get_reply(prompt, llm))
+#     # print(prompt)
 
-    prompt = get_full_prompt_for_llama_api(prompt, 'test_collection', [])
-    print(prompt)
-    response = get_llama_api_response(prompt)
-    print(response)
+#     prompt = get_full_prompt_for_llama_api(prompt, 'test_collection', [])
+#     print(prompt)
+#     response = get_llama_api_response(prompt)
+#     print(response)
 
 
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()
