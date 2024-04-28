@@ -3,8 +3,8 @@ import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {VideoSession} from "../../../models/video-session.model";
 import {VideoSessionService} from "../../../services/video-session.service";
 import {DateFormatPipe} from "../../../pipes/date-format.pipe";
-import {ChatMessageService} from "../../../services/chat-message.service";
 import {AuthService} from "../../../services/auth.service";
+import {ChatMessageService} from "../../../services/old/chat-message.service";
 
 @Component({
   selector: 'app-chat',

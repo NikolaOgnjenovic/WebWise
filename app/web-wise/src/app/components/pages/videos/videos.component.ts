@@ -4,7 +4,7 @@ import {NgForOf, NgStyle} from "@angular/common";
 import {Video} from "../../../models/video.model";
 import {VideoListComponent} from "../../shared/video-list/video-list.component";
 import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
-import {VideoService} from "../../../services/video.service";
+import {VideoService} from "../../../services/old/video.service";
 
 
 @Component({

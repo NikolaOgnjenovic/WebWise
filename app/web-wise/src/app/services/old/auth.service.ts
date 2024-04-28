@@ -26,24 +26,6 @@ export class AuthService {
     localStorage.setItem(this.currentUserKey, JSON.stringify(user));
     return true;
   }
-    // const headers = new HttpHeaders({
-    //   'X-CSRFToken': 'B9p9SRWnot4fedpd8sDpBJSOKxs1BXHn',
-    //   'Content-Type': 'application/json',
-    //   'Access-Control-Allow-Origin': '*',
-    // });
-    // return this.http.post<any>('http://localhost:8001/api/v1/login/', { username, password }, { headers }).pipe(
-    //   map(response => {
-    //     this.currentUser = {
-    //       id: response['user_id'],
-    //       username: response.username,
-    //       email: response.email
-    //     };
-    //     return true;
-    //   }),
-    //   catchError(error => {
-    //     return throwError(error);
-    //   })
-    // );
 
   logout(): void {
     localStorage.removeItem(this.currentUserKey);

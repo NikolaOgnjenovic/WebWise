@@ -7,7 +7,7 @@ import {Video} from "../../../models/video.model";
 import {ToastrService} from "ngx-toastr";
 import {AuthService} from "../../../services/old/auth.service";
 import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
-import {VideoService} from "../../../services/video.service";
+import {VideoService} from "../../../services/old/video.service";
 
 @Component({
   selector: 'app-contribute',

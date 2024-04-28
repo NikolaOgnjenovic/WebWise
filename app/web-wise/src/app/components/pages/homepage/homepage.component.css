@@ -1,0 +1,4 @@
+.row .container h2,
+.row .container p {
+  color: var(--color-primary);
+}
