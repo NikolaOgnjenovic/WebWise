@@ -6,8 +6,8 @@ import {RouterOutlet} from "@angular/router";
 import {VideoListComponent} from "../../shared/video-list/video-list.component";
 import {Video} from "../../../models/video.model";
 import {ToastrService} from "ngx-toastr";
-import {VideoService} from "../../../services/old/video.service";
-import {AuthService} from "../../../services/old/auth.service";
+import {VideoService} from "../../../services/video.service";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-contribute',
