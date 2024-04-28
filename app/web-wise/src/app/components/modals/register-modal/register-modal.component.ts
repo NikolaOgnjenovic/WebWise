@@ -43,20 +43,26 @@ export class RegisterModalComponent implements OnInit {
     }
 
     const { email, username, password } = this.registerForm.value;
-    this.authService.register(username, email, password).subscribe(
-      _ => {
-        this.toastr.success('Registration successful!', 'Success');
-        this.activeModal.close();
-      },
-      error => {
-        if (error.error && error.error.username) {
-          this.toastr.error(error.error.username[0], 'Error');
-        } else if (error.error && error.error.email) {
-          this.toastr.error(error.error.email[0], 'Error');
-        } else {
-          this.toastr.error('Registration failed', 'Error');
-        }
-      }
-    );
+    if (this.authService.register(username, email, password)) {
+      this.toastr.success('Registration successful!', 'Success', { positionClass: 'toast-bottom-right' });
+      this.activeModal.close();
+    } else {
+      this.toastr.error('Registration failed', 'Error', { positionClass: 'toast-bottom-right' });
+    }
+    // this.authService.register(username, email, password).subscribe(
+    //   _ => {
+    //     this.toastr.success('Registration successful!', 'Success');
+    //     this.activeModal.close();
+    //   },
+    //   error => {
+    //     if (error.error && error.error.username) {
+    //       this.toastr.error(error.error.username[0], 'Error');
+    //     } else if (error.error && error.error.email) {
+    //       this.toastr.error(error.error.email[0], 'Error');
+    //     } else {
+    //       this.toastr.error('Registration failed', 'Error');
+    //     }
+    //   }
+    // );
   }
 }

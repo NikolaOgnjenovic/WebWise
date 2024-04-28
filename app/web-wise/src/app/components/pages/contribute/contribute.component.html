@@ -12,9 +12,14 @@
           </div>
         </div>
       </div>
-      <h4>Your videos:</h4>
+      <div *ngIf="videos.length > 0">
+        <h4>Your videos:</h4>
+        <app-video-list [videos]="filteredVideos" />
+      </div>
+      <div *ngIf="videos.length === 0">
+        <h4>You haven't uploaded any videos. Try uploading one right now!</h4>
+      </div>
 
-      <app-video-list [videos]="filteredVideos" />
       <router-outlet/>
     </div>
   </div>

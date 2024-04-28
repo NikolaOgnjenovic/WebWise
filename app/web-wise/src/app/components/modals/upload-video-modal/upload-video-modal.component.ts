@@ -38,6 +38,9 @@ export class UploadVideoModalComponent {
     this.videoService.addVideo(title, thumbnailUrl, videoUrl, this.authService.getCurrentUser()!.id);
     this.modalService.dismissAll();
     this.newVideoForm.reset();
+    if (this.onVideoCreated != undefined) {
+      this.onVideoCreated();
+    }
     // this.videoService.createVideo(title, thumbnailUrl, videoUrl, this.authService.getCurrentUser()!.id)
     //   .subscribe(
     //     (response) => {

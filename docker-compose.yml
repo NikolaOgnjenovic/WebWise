@@ -35,6 +35,16 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
 
+  model:
+    container_name: model
+    build: ./model
+    env_file:
+      - .env
+    volumes:
+      - model_data:/app
+    depends_on:
+      - chroma
+
   chroma:
     container_name: chroma
     image: chromadb/chroma:latest
@@ -51,3 +61,4 @@ volumes:
   db_data:
   angular_app_data:
   chromadb_data:
+  model_data:

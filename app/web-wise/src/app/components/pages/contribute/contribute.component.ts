@@ -8,6 +8,7 @@ import {ToastrService} from "ngx-toastr";
 import {AuthService} from "../../../services/old/auth.service";
 import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
 import {VideoService} from "../../../services/old/video.service";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-contribute',
@@ -16,7 +17,8 @@ import {VideoService} from "../../../services/old/video.service";
   imports: [
     RouterOutlet,
     VideoListComponent,
-    SidebarComponent
+    SidebarComponent,
+    NgIf
   ],
   styleUrls: ['./contribute.component.css']
 })

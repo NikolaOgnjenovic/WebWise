@@ -21,7 +21,7 @@ export class AuthService implements OnInit {
 
   login(username: string, password: string): boolean {
     const user: User = {
-      id: 'user1',
+      id: username,
       email: "john@doe.com",
       username: username
     };
@@ -34,26 +34,29 @@ export class AuthService implements OnInit {
     localStorage.removeItem(this.currentUserKey);
   }
 
-  register(username: string, email: string, password: string): Observable<any> {
-    const headers = new HttpHeaders({
-      'X-CSRFToken': 'B9p9SRWnot4fedpd8sDpBJSOKxs1BXHn',
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    });
-    return this.http.post<any>('http://localhost:8001/api/v1/register/', { username, email, password }, { headers }).pipe(
-      map(response => {
-        const user = {
-          id: response.id,
-          username: response.username,
-          email: response.email
-        };
-        localStorage.setItem(this.currentUserKey, JSON.stringify(user));
-        return true;
-      }),
-      catchError(error => {
-        return throwError(error);
-      })
-    );
+  // register(username: string, email: string, password: string): Observable<any> {
+  //   const headers = new HttpHeaders({
+  //     'X-CSRFToken': 'B9p9SRWnot4fedpd8sDpBJSOKxs1BXHn',
+  //     'Content-Type': 'application/json',
+  //     'Access-Control-Allow-Origin': '*',
+  //   });
+  //   return this.http.post<any>('http://localhost:8001/api/v1/register/', { username, email, password }, { headers }).pipe(
+  //     map(response => {
+  //       const user = {
+  //         id: response.id,
+  //         username: response.username,
+  //         email: response.email
+  //       };
+  //       localStorage.setItem(this.currentUserKey, JSON.stringify(user));
+  //       return true;
+  //     }),
+  //     catchError(error => {
+  //       return throwError(error);
+  //     })
+  //   );
+  // }
+  register(username: string, email: string, password: string): boolean {
+    return this.login(username, password);
   }
 
   getCurrentUser(): User | null {

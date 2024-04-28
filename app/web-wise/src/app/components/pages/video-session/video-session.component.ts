@@ -29,7 +29,7 @@ export class VideoSessionComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private videoService: VideoService,
+    protected videoService: VideoService,
     private videoSessionService: VideoSessionService,
     private toastr: ToastrService
   ) {

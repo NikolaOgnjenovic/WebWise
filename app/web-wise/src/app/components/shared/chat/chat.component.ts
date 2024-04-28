@@ -78,6 +78,9 @@ export class ChatComponent {
           return throwError(error);
         })
       );
+      const botMessage = this.chatMessageService.createChatMessage("This is an AI generated message!", "-1", "Assistant");
+      this.videoSessionService.addChatMessage(this.videoSession.id, botMessage);
+      this.cdr.detectChanges();
     }
 
     inputMessage.value = '';
