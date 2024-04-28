@@ -18,9 +18,7 @@ export class AuthService {
 
   login(username: string, password: string): Observable<boolean> {
     const headers = new HttpHeaders({
-      'X-CSRFToken': 'B9p9SRWnot4fedpd8sDpBJSOKxs1BXHn',
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
     });
     return this.http.post<any>('http://localhost:8001/api/v1/login/', { username, password }, { headers }).pipe(
       map(response => {
@@ -42,6 +40,7 @@ export class AuthService {
   }
 
   register(username: string, email: string, password: string): Observable<any> {
+    console.log('haha')
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });

@@ -41,7 +41,7 @@ export class VideoService {
     observable.subscribe(response => {
         response.forEach((video: any) => {
           videos.push({
-            id: "",
+            id: video['id'],
             title: video.title,
             thumbnailUrl: video['thumbnail_url'],
             videoUrl: video['video_url'],
