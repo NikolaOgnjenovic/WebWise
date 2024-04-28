@@ -1,16 +1,21 @@
-<app-navbar/>
+<div class="row">
+  <app-sidebar class="col-2"/>
 
-<div class="container mt-5">
-  <h2>Contribute to the community by uploading educational videos.</h2>
-  <button class="btn px-0 btn-primary mb-4" (click)="openModal()">Upload Video</button>
-  <div class="container px-0">
-    <div class="form-group px-0 mb-4">
-      <input type="text" class="form-control" placeholder="Search" (input)="search($event)">
+  <div class="col-10">
+    <div class="container mt-5">
+      <h2>Contribute to the community by uploading educational videos.</h2>
+      <button class="btn px-0 btn-primary mb-4" (click)="openModal()">Upload Video</button>
+      <div class="container px-0">
+        <div class="form-group px-0 mb-4">
+          <input type="text" class="form-control" placeholder="Search" (input)="search($event)">
+        </div>
+        <app-video-list
+          [videos]="filteredVideos"
+        />
+      </div>
+
+      <router-outlet/>
     </div>
-    <app-video-list
-      [videos]="filteredVideos"
-    />
   </div>
-
-  <router-outlet/>
 </div>
+

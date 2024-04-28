@@ -40,23 +40,23 @@ export class LoginModalComponent implements OnInit {
     }
 
     const { username, password } = this.loginForm.value;
-    // if (this.authService.login(username, password)) {
-    //   this.activeModal.close();
-    // } else {
-    //   this.toastr.error('Invalid credentials. Try again!', 'Error', { positionClass: 'toast-bottom-right' });
-    // }
-    this.authService.login(username, password).subscribe(
-      success => {
-        if (!success) {
-          this.toastr.error('Invalid credentials. Try again!', 'Error', { positionClass: 'toast-bottom-right' });
-        } else {
-          this.activeModal.close();
-        }
-      },
-      error => {
-        console.error('Login failed:', error);
-        this.toastr.error('An error occurred during login. Please try again later.', 'Error', { positionClass: 'toast-bottom-right' });
-      }
-    );
+    if (this.authService.login(username, password)) {
+      this.activeModal.close();
+    } else {
+      this.toastr.error('Invalid credentials. Try again!', 'Error', { positionClass: 'toast-bottom-right' });
+    }
+    // this.authService.login(username, password).subscribe(
+    //   success => {
+    //     if (!success) {
+    //       this.toastr.error('Invalid credentials. Try again!', 'Error', { positionClass: 'toast-bottom-right' });
+    //     } else {
+    //       this.activeModal.close();
+    //     }
+    //   },
+    //   error => {
+    //     console.error('Login failed:', error);
+    //     this.toastr.error('An error occurred during login. Please try again later.', 'Error', { positionClass: 'toast-bottom-right' });
+    //   }
+    // );
   }
 }

@@ -1,22 +1,22 @@
 import { Component} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {UploadVideoModalComponent} from "../../modals/upload-video-modal/upload-video-modal.component";
-import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {RouterOutlet} from "@angular/router";
 import {VideoListComponent} from "../../shared/video-list/video-list.component";
 import {Video} from "../../../models/video.model";
 import {ToastrService} from "ngx-toastr";
 import {VideoService} from "../../../services/old/video.service";
 import {AuthService} from "../../../services/old/auth.service";
+import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-contribute',
   templateUrl: './contribute.component.html',
   standalone: true,
   imports: [
-    NavbarComponent,
     RouterOutlet,
-    VideoListComponent
+    VideoListComponent,
+    SidebarComponent
   ],
   styleUrls: ['./contribute.component.css']
 })

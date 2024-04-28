@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, RouterOutlet} from "@angular/router";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {Video} from "../../../models/video.model";
 import {VideoSessionService} from "../../../services/video-session.service";
 import {VideoSession} from "../../../models/video-session.model";
-import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {VideoService} from "../../../services/old/video.service";
+import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   standalone: true,
   imports: [
-    NavbarComponent,
     RouterOutlet,
-    NgForOf
+    NgForOf,
+    NgIf,
+    SidebarComponent
   ],
   styleUrls: ['./history.component.css']
 })

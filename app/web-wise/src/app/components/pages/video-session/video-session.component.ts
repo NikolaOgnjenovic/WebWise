@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, RouterOutlet} from '@angular/router';
 import {ChatComponent} from "../../shared/chat/chat.component";
-import {NavbarComponent} from "../../shared/navbar/navbar.component";
 import {NgClass, NgIf} from "@angular/common";
 import {Video} from "../../../models/video.model";
 import {VideoSession} from "../../../models/video-session.model";
 import {VideoSessionService} from "../../../services/video-session.service";
 import { ToastrService } from 'ngx-toastr';
 import {VideoService} from "../../../services/old/video.service";
+import {SidebarComponent} from "../../shared/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-video-session',
@@ -16,9 +16,9 @@ import {VideoService} from "../../../services/old/video.service";
   imports: [
     RouterOutlet,
     ChatComponent,
-    NavbarComponent,
     NgIf,
-    NgClass
+    NgClass,
+    SidebarComponent
   ],
   styleUrls: ['./video-session.component.css']
 })

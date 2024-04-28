@@ -1,18 +1,28 @@
-<app-navbar/>
+<div class="row">
+  <app-sidebar class="col-2"/>
 
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-4 mb-4" *ngFor="let videoSession of videoSessions">
-      <div class="card" (click)="navigateToVideoSession(videoSession)">
-        <img [src]="videos[videoSession.id].thumbnailUrl" class="card-img-top" alt="Video Thumbnail">
-        <div class="card-body">
-          <h5 class="card-title">{{ videos[videoSession.id].title }}</h5>
-          <p class="card-text">Last updated: {{ videoSession.lastModifiedDateTime }}</p>
-          <p class="card-text">Chat Messages: {{ videoSession.chatMessages.length }}</p>
+  <div class="col-10">
+    <div class="container mt-5">
+      <h2 class="mb-4">Continue exploring videos that you've already interacted with.</h2>
+
+      <div class="row" *ngIf="videoSessions && videoSessions.length > 0">
+        <div class="col-4 mb-4" *ngFor="let videoSession of videoSessions">
+          <div class="card" (click)="navigateToVideoSession(videoSession)">
+            <img [src]="videos[videoSession.id].thumbnailUrl" class="card-img-top" alt="Video Thumbnail">
+            <div class="card-body">
+              <h5 class="card-title">{{ videos[videoSession.id].title }}</h5>
+              <p class="card-text">Last updated: {{ videoSession.lastModifiedDateTime }}</p>
+              <p class="card-text">Chat Messages: {{ videoSession.chatMessages.length }}</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div *ngIf="!videoSessions || videoSessions.length === 0">
+        <h4>No videos available <span>😢</span></h4>
+      </div>
+
+      <router-outlet/>
     </div>
   </div>
-
-  <router-outlet/>
 </div>
