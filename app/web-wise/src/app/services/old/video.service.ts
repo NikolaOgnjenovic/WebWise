@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Video} from "../../models/video.model";
+import { HttpClient } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +26,7 @@ export class VideoService {
       'user2')
   ];
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   addVideo(title: string, thumbnailUrl: string, videoUrl: string, uploaderId: string): void {
     const video = {
@@ -34,6 +37,20 @@ export class VideoService {
       uploaderId
     }
     this.videos.push(video);
+
+    var observable = this.http.post<any>('http://localhost:8002/video/'+video.id, video.videoUrl)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(error => {
+          return throwError(error);
+        })
+      );
+      observable.subscribe((response: any) => {
+        console.log(response);
+      });
+
   }
 
   getAll(): Video[] {
