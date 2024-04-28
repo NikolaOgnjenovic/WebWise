@@ -5,6 +5,9 @@ import {VideoSessionService} from "../../../services/video-session.service";
 import {DateFormatPipe} from "../../../pipes/date-format.pipe";
 import {AuthService} from "../../../services/auth.service";
 import {ChatMessageService} from "../../../services/old/chat-message.service";
+import { HttpClient } from '@angular/common/http';
+import {catchError, map} from "rxjs/operators";
+import {Observable, throwError} from "rxjs";
 
 @Component({
   selector: 'app-chat',
@@ -25,7 +28,8 @@ export class ChatComponent {
     private chatMessageService: ChatMessageService,
     private videoSessionService: VideoSessionService,
     private cdr: ChangeDetectorRef,
-    private authService: AuthService
+    private authService: AuthService,
+    private http: HttpClient
   ) {
     this.videoSession = null;
   }
@@ -52,6 +56,28 @@ export class ChatComponent {
       const chatMessage = this.chatMessageService.createChatMessage(message, this.authService.getCurrentUser()!.id, this.authService.getCurrentUser()!.username);
       this.videoSessionService.addChatMessage(this.videoSession.id, chatMessage);
       this.cdr.detectChanges();
+
+        const history: {'role': string, 'content': string}[] = [];
+        this.videoSession.chatMessages.forEach((message) => {
+            const role = message.senderId==='-1' ? 'ai' : 'user';
+            history.push(
+                {
+                    role,
+                    'content': message.content
+                }
+            );
+        });
+      var observable = this.http.post<any>('http://localhost:8002/api/v1/videos/', {
+        'history': history
+      })
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(error => {
+          return throwError(error);
+        })
+      );
     }
 
     inputMessage.value = '';

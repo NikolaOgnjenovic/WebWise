@@ -1,16 +1,16 @@
 from typing import List, Tuple
-from llama_cpp import Llama
+# from llama_cpp import Llama
 from langchain.prompts import ChatPromptTemplate
 from constants import MODEL_PATH
 from services.chroma_connect import get_similar_documents
 # from llama_api_connect import get_llama_api_response
 
 
-def init_model():
-    return Llama(
-        model_path=MODEL_PATH,
-        n_threads=2
-    )
+# def init_model():
+#     return Llama(
+#         model_path=MODEL_PATH,
+#         n_threads=2
+#     )
 
 
 def get_reply(prompt: str, llm):
