@@ -1,23 +1,30 @@
-/* Styles for the application */
-
-/* Cool title */
-h1 {
+h2 {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #333;
+  color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
-/* Search input */
 .form-control {
   width: 50%;
   font-size: 1rem;
   padding: 0.5rem;
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
 }
 
-/* Video cards */
+.form-control::placeholder {
+  color: var(--color-primary);
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem var(--color-primary);
+}
+
 .card {
-  background-color: #fff;
+  background-color: var(--color-secondary);
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -37,9 +44,9 @@ h1 {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  color: var(--color-primary);
 }
 
 .card-text {
-  color: #666;
+  color: var(--color-primary);
 }
-

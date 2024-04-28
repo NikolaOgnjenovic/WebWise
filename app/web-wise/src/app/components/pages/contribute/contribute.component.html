@@ -4,18 +4,18 @@
   <div class="col-10">
     <div class="container mt-5">
       <h2>Contribute to the community by uploading educational videos.</h2>
-      <button class="btn px-0 btn-primary mb-4" (click)="openModal()">Upload Video</button>
-      <div class="container px-0">
-        <div class="form-group px-0 mb-4">
-          <input type="text" class="form-control" placeholder="Search" (input)="search($event)">
+      <div class="upload-video-row d-flex align-items-center mb-4">
+        <button class="btn px-4 btn-primary mr-2" (click)="openModal()">Upload Video</button>
+        <div class="search-row">
+          <div class="form-group px-0 mb-0">
+            <input type="text" class="form-control" placeholder="Search" (input)="search($event)">
+          </div>
         </div>
-        <app-video-list
-          [videos]="filteredVideos"
-        />
       </div>
+      <h4>Your videos:</h4>
 
+      <app-video-list [videos]="filteredVideos" />
       <router-outlet/>
     </div>
   </div>
 </div>
-
