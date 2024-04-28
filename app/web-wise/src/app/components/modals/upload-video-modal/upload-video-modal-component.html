@@ -1,35 +1,35 @@
-<div class="modal-header d-flex justify-content-between">
-  <h4 class="modal-title" id="modal-basic-title">Upload New Video</h4>
-  <button type="button" class="btn-close align-self-start" aria-label="Close" (click)="modalService.dismissAll()"></button>
+<div class="modal-header sidebar-brand d-flex justify-content-between" style="background-color: var(--color-primary);">
+  <h4 class="modal-title" id="modal-basic-title" style="color: var(--color-secondary);">Upload a new video</h4>
 </div>
 
-<div class="modal-body">
+<div class="modal-body" style="background-color: var(--color-primary);">
   <form [formGroup]="newVideoForm">
     <div class="form-group">
-      <label for="title">Title</label>
-      <input type="text" class="form-control" id="title" formControlName="title">
-      <div *ngIf="newVideoForm.get('title')?.invalid && newVideoForm.get('title')?.touched" class="text-danger">
-        Title is required
+      <label for="title" style="color: var(--color-secondary);">Title</label>
+      <input type="text" class="form-control modal-input" id="title" formControlName="title">
+      <div *ngIf="newVideoForm.get('title')?.invalid && newVideoForm.get('title')?.touched" class="text-danger modal-error" style="color: white;">
+        <span *ngIf="newVideoForm.get('title')?.errors?.['required']" style="color: white;">Title is required</span>
       </div>
     </div>
     <div class="form-group">
-      <label for="thumbnailUrl">Thumbnail URL</label>
-      <input type="text" class="form-control" id="thumbnailUrl" formControlName="thumbnailUrl">
-      <div *ngIf="newVideoForm.get('thumbnailUrl')?.invalid && newVideoForm.get('thumbnailUrl')?.touched" class="text-danger">
-        Thumbnail URL is required
+      <label for="thumbnailUrl" style="color: var(--color-secondary);">Thumbnail URL</label>
+      <input type="text" class="form-control modal-input" id="thumbnailUrl" formControlName="thumbnailUrl">
+      <div *ngIf="newVideoForm.get('thumbnailUrl')?.invalid && newVideoForm.get('thumbnailUrl')?.touched" class="text-danger modal-error">
+        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['invalidUrl']" style="color: white;">Invalid URL</span>
+        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['required']" style="color: white;">Video URL is required</span>
       </div>
     </div>
     <div class="form-group">
-      <label for="videoUrl">Video URL</label>
-      <input type="text" class="form-control" id="videoUrl" formControlName="videoUrl">
-      <div *ngIf="newVideoForm.get('videoUrl')?.invalid && newVideoForm.get('videoUrl')?.touched" class="text-danger">
-        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['invalidUrl']">Invalid URL</span>
-        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['required']">Video URL is required</span>
+      <label for="videoUrl" style="color: var(--color-secondary);">Video URL</label>
+      <input type="text" class="form-control modal-input" id="videoUrl" formControlName="videoUrl">
+      <div *ngIf="newVideoForm.get('videoUrl')?.invalid && newVideoForm.get('videoUrl')?.touched" class="text-danger modal-error">
+        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['invalidUrl']" style="color: white;">Invalid URL</span>
+        <span *ngIf="newVideoForm.get('videoUrl')?.errors?.['required']" style="color: white;">Video URL is required</span>
       </div>
     </div>
   </form>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-primary" (click)="createVideo()" [disabled]="newVideoForm.invalid">Create</button>
-  <button type="button" class="btn btn-secondary" (click)="modalService.dismissAll()">Cancel</button>
+  <div class="modal-button-container" style="background-color: var(--color-primary);">
+    <button type="button" class="btn btn-outline-light" (click)="createVideo()" [disabled]="newVideoForm.invalid">Create</button>
+    <button type="button" class="btn btn-outline-light" (click)="modalService.dismissAll()">Cancel</button>
+  </div>
 </div>

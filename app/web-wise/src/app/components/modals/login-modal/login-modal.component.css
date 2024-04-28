@@ -23,3 +23,13 @@
   -webkit-box-shadow: 0 0 0 1000px var(--color-secondary) inset !important;
   -webkit-text-fill-color: var(--color-primary) !important;
 }
+
+.modal-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.modal-error div {
+  color: var(--color-secondary);
+}

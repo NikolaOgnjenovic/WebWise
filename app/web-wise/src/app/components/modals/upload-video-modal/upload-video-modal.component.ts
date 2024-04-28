@@ -13,7 +13,8 @@ import {AuthService} from "../../../services/old/auth.service";
     ReactiveFormsModule,
     NgIf
   ],
-  templateUrl: 'upload-video-modal-component.html'
+  templateUrl: 'upload-video-modal-component.html',
+  styleUrls: ['./upload-video-modal.component.css']
 })
 export class UploadVideoModalComponent {
   @Input() onVideoCreated: (() => void) | undefined;
