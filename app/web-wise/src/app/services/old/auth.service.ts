@@ -16,13 +16,34 @@ export class AuthService {
     return !!this.currentUser;
   }
 
-  login(username: string, password: string): boolean {
-    this.currentUser = {
-      id: 'user1',
-      email: "john@doe.com",
-      username: username
-    }
-    return true;
+  login(username: string, password: string): Observable<boolean> {
+    const headers = new HttpHeaders({
+      'X-CSRFToken': 'B9p9SRWnot4fedpd8sDpBJSOKxs1BXHn',
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    });
+    return this.http.post<any>('http://localhost:8001/api/v1/login/', { username, password }, { headers }).pipe(
+      map(response => {
+        this.currentUser = {
+          id: response['user_id'],
+          username: response.username,
+          email: response.email
+        };
+        return true;
+      }),
+      catchError(error => {
+        return throwError(error);
+      })
+    );
+  }
+  // login(username: string, password: string): boolean {
+  //   this.currentUser = {
+  //     id: 'user1',
+  //     email: "john@doe.com",
+  //     username: username
+  //   }
+  //   return true;
+  // }
     // const headers = new HttpHeaders({
     //   'X-CSRFToken': 'B9p9SRWnot4fedpd8sDpBJSOKxs1BXHn',
     //   'Content-Type': 'application/json',
@@ -41,7 +62,6 @@ export class AuthService {
     //     return throwError(error);
     //   })
     // );
-  }
 
   logout(): void {
     this.currentUser = null;
