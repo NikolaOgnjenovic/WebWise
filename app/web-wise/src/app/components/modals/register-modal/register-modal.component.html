@@ -1,0 +1,35 @@
+<div class="modal-wrapper" style="background-color: var(--color-primary);">
+  <div class="modal-header sidebar-brand" style="justify-content: center;">
+    <h4 class="modal-title" style="color: var(--color-secondary);">Register</h4>
+  </div>
+  <div class="modal-body" style="background-color: var(--color-primary);">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="form-group">
+        <label for="email" class="modal-label">Email</label>
+        <input type="email" class="form-control modal-input" id="email" formControlName="email">
+        <div *ngIf="formControls['email'].invalid && (formControls['email'].dirty || formControls['email'].touched)" class="text-danger modal-error">
+          <div *ngIf="formControls['email'].errors?.['required']" style="color: var(--color-error);">Email is required</div>
+          <div *ngIf="formControls['email'].errors?.['email']" style="color: var(--color-error);">Invalid email format</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="username" class="modal-label">Username</label>
+        <input type="text" class="form-control modal-input" id="username" formControlName="username">
+        <div *ngIf="formControls['username'].invalid && (formControls['username'].dirty || formControls['username'].touched)" class="text-danger">
+          <div *ngIf="formControls['username'].errors?.['required']" style="color: var(--color-error);">Username is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="modal-label">Password</label>
+        <input type="password" class="form-control modal-input" id="password" formControlName="password">
+        <div *ngIf="formControls['password'].invalid && (formControls['password'].dirty || formControls['password'].touched)" class="text-danger">
+          <div *ngIf="formControls['password'].errors?.['required']">Password is required</div>
+        </div>
+      </div>
+      <div class="modal-button-container">
+        <button type="submit" class="btn btn-outline-light btn-padded" [disabled]="registerForm.invalid">Register</button>
+        <button type="button" class="btn btn-outline-light btn-padded" (click)="activeModal.dismiss()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

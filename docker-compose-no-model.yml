@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  angular-app:
+    container_name: angular-app-no-model
+    build: ./app
+    ports:
+      - "4200:4200"
+    volumes:
+      - angular_app_data_no_model:/app
+#      - ./app/web-wise:/app # While developing to not have to rebuild the image
+    depends_on:
+      - api
+
+  api:
+    container_name: api-no-model
+    build: ./api
+    ports:
+      - "8001:8001"
+    env_file:
+      - .env
+    volumes:
+      - api_data_no_model:/app
+      - ./api:/app # While developing to not have to rebuild the image
+    depends_on:
+      - db
+
+  db:
+    container_name: db-no-model
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - db_data_no_model:/var/lib/postgresql/data
+
+  chroma:
+    container_name: chroma-no-model
+    image: chromadb/chroma:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - chromadb_data_no_model:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+      - ANONYMIZED_TELEMETRY=FALSE
+
+volumes:
+  api_data_no_model:
+  db_data_no_model:
+  angular_app_data_no_model:
+  chromadb_data_no_model:
+  model_data_no_model:

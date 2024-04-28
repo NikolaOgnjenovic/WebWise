@@ -1,0 +1,11 @@
+moviepy==1.0.3
+librosa==0.10.1
+soundfile==0.12.1
+chromadb==0.5.0
+langchain==0.1.16
+llamaapi==0.1.36
+SpeechRecognition==3.10.3
+torchaudio==2.0.1
+transformers==4.40.1
+requests==2.31.0
+Flask==3.0.3

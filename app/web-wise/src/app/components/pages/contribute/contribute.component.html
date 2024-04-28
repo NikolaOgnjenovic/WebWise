@@ -1,0 +1,26 @@
+<div class="row">
+  <app-sidebar class="col-2"/>
+
+  <div class="col-10">
+    <div class="container mt-5">
+      <h2>Contribute to the community by uploading educational videos.</h2>
+      <div class="upload-video-row d-flex align-items-center mb-4">
+        <button class="btn px-4 btn-primary mr-2" (click)="openModal()">Upload Video</button>
+        <div class="search-row">
+          <div class="form-group px-0 mb-0">
+            <input type="text" class="form-control" placeholder="Search" (input)="search($event)">
+          </div>
+        </div>
+      </div>
+      <div *ngIf="videos.length > 0">
+        <h4>Your videos:</h4>
+        <app-video-list [videos]="filteredVideos" />
+      </div>
+      <div *ngIf="videos.length === 0">
+        <h4>You haven't uploaded any videos. Try uploading one right now!</h4>
+      </div>
+
+      <router-outlet/>
+    </div>
+  </div>
+</div>

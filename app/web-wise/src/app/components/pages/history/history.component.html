@@ -1,0 +1,31 @@
+<div class="row">
+  <app-sidebar class="col-2"/>
+
+  <div class="col-10">
+    <div class="container mt-5">
+      <h2>Continue where you left off!</h2>
+
+      <div class="row">
+        <div *ngIf="videoSessions && videoSessions.length > 0" class="row">
+          <div class="col-4 mb-4" *ngFor="let videoSession of videoSessions">
+            <div class="card" (click)="navigateToVideoSession(videoSession)">
+              <div class="card-thumbnail" [ngStyle]="{'background-image': 'url(' + videos[videoSession.id].thumbnailUrl + ')'}">
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">{{ videos[videoSession.id].title }}</h5>
+                <h6 class="card-text">Last updated: {{ videoSession.lastModifiedDateTime }}</h6>
+                <h6 class="card-text">Chat Messages: {{ videoSession.chatMessages.length }}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!videoSessions || videoSessions.length === 0">
+        <h4>No video previous video sessions available. Try starting one!</h4>
+      </div>
+
+      <router-outlet/>
+    </div>
+  </div>
+</div>

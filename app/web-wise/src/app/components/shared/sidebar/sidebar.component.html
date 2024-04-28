@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-2 bg-dark vh-100">
+    <div class="sidebar">
+      <a class="sidebar-brand" routerLink="">
+        <span class="web">Web</span><span class="wise">Wise</span>
+      </a>
+      <ul class="nav flex-column">
+        <ng-container *ngIf="isLoggedIn()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/videos" routerLinkActive="active">Videos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contribute" routerLinkActive="active">Contribute</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/history" routerLinkActive="active">History</a>
+          </li>
+        </ng-container>
+      </ul>
+      <div class="sidebar-bottom">
+        <button *ngIf="isLoggedIn(); else notLoggedIn" class="btn btn-outline-light" routerLink="/" (click)="logout()">Logout</button>
+        <ng-template #notLoggedIn>
+          <button class="btn btn-outline-light btn-padded" (click)="openLoginModal()">Login</button>
+          <button class="btn btn-outline-light btn-padded" (click)="openRegisterModal()">Register</button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
