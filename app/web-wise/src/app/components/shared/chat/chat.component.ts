@@ -67,7 +67,7 @@ export class ChatComponent {
                 }
             );
         });
-      var observable = this.http.post<any>('http://localhost:8002/api/v1/videos/', {
+      var observable = this.http.post<any>('http://localhost:8002/message/'+this.videoSession.videoId, {
         'history': history
       })
       .pipe(
@@ -81,6 +81,13 @@ export class ChatComponent {
       const botMessage = this.chatMessageService.createChatMessage("This is an AI generated message!", "-1", "Assistant");
       this.videoSessionService.addChatMessage(this.videoSession.id, botMessage);
       this.cdr.detectChanges();
+      observable.subscribe((response: any) => {
+        console.log(response);
+        console.log(response.body);
+        const chatMessage = this.chatMessageService.createChatMessage(response.body, "-1", "ai");
+        this.videoSessionService.addChatMessage(this.videoSession!.id, chatMessage);
+        this.cdr.detectChanges();
+      });
     }
 
     inputMessage.value = '';

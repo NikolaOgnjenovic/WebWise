@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Video} from "../../models/video.model";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import { HttpClient } from '@angular/common/http';
+import { catchError, map } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +11,7 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 export class VideoService {
   private videos: Video[];
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(private sanitizer: DomSanitizer, private httpClient: HttpClient) {
     this.videos = [
       new Video('1',
         'Procedural Landmass Generation (E15: data storage)',
@@ -41,6 +44,20 @@ export class VideoService {
       uploaderId
     }
     this.videos.push(video);
+
+    var observable = this.httpClient.post<any>('http://localhost:8002/video/'+video.id, video.videoUrl)
+      .pipe(
+        map(response => {
+          return response;
+        }),
+        catchError(error => {
+          return throwError(error);
+        })
+      );
+      observable.subscribe((response: any) => {
+        console.log(response);
+      });
+
   }
 
   getAll(): Video[] {
