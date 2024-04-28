@@ -1,0 +1,49 @@
+/* Styles for the application */
+
+/* Cool title */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Search input */
+.form-control {
+  width: 50%;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+/* Video cards */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: #666;
+}
+
+/* Styling for navbar */
+app-navbar {
+  /* Add your styles for the navbar here */
+}

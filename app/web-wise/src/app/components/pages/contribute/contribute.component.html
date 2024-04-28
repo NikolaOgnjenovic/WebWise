@@ -1,9 +1,10 @@
 <app-navbar/>
 
 <div class="container mt-5">
-  <button class="btn btn-primary" (click)="openModal()">Upload Video</button>
-  <div class="container">
-    <div class="form-group">
+  <h2>Contribute to the community by uploading educational videos.</h2>
+  <button class="btn px-0 btn-primary mb-4" (click)="openModal()">Upload Video</button>
+  <div class="container px-0">
+    <div class="form-group px-0 mb-4">
       <input type="text" class="form-control" placeholder="Search" (input)="search($event)">
     </div>
     <app-video-list

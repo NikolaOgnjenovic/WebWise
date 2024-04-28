@@ -14,7 +14,4 @@ import {NavbarComponent} from "../../shared/navbar/navbar.component";
   styleUrl: './homepage.component.css'
 })
 export class HomepageComponent {
-  username: string = "John";
-
-  constructor(private router: Router) {}
 }

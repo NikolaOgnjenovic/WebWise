@@ -1,9 +1,11 @@
 <app-navbar/>
 
 <div class="container mt-5">
-  <div class="container">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Search" (input)="search($event)">
+  <h2>Summarize & explore educational videos curated just for you.</h2>
+
+  <div class="container px-0">
+    <div class="form-group mb-4">
+      <input type="text" class="form-control px-2 py-1" placeholder="Search" (input)="search($event)">
     </div>
     <app-video-list
       [videos]="filteredVideos"
